@@ -9,7 +9,7 @@ import '../modals/book_modal.dart';
 class ApiServices {
   Future<List<Articles>?> getList() async {
     String url =
-        "https://newsapi.org/v2/everything?q=tesla&from=2022-06-14&sortBy=publishedAt&apiKey=b984efd5b82a4a9bafb5acd2baf0eb9f";
+        "https://newsapi.org/v2/everything?q=tesla&from=2022-0-14&sortBy=publishedAt&apiKey=b984efd5b82a4a9bafb5acd2baf0eb9f";
     try {
       final response = await http.get(Uri.parse(url));
 

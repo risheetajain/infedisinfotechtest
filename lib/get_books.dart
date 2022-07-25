@@ -33,18 +33,34 @@ class _GetBooksState extends State<GetBooks> {
         centerTitle: true,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(50),
-          child: TextFormField(
-            onChanged: (value) {
-              setState(() {
-                _loadFromApi(value);
-              });
-            },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Search',
+                prefixIcon: Icon(Icons.search),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _loadFromApi(value);
+                });
+              },
+            ),
           ),
         ),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
-          : _buildEmployeeListView(),
+          : list != null && list!.isNotEmpty
+              ? _buildEmployeeListView()
+              : Center(child: Text('No Data Found')),
     );
   }
 
